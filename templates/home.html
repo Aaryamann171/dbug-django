@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %}
+<nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">D.BUG</a>
+  </div>
+  <a href="team">
+    <h6>Team</h6>
+  </a>
+  <a href="about">
+    <h6>About</h6>
+  </a>
+  <a href="contact">
+    <h6>Contact Us</h6>
+  </a>
+</nav>
+
+<h1
+  style="
+    margin-left: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  "
+>
+  Let's <span style="color: #335eea;">dbug!</span
+  ><img src="static/code.png" height="500" width="500" />
+</h1>
+<form
+  action="pending"
+  method="GET"
+  style="
+    margin-left: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  "
+>
+  <button class="btn btn-primary" type="submit">View Pending Reviews</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+{% endblock %}

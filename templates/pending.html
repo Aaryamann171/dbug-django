@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  style="
+    margin-left: 7em;
+    margin-right: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  "
+>
+  <h1>Pending</h1>
+  <br /><br />
+
+  <button type="button" class="collapsible btn btn-dark">Odd Numbers</button>
+  <div class="content">
+    <pre class="prettyprint">
+        # Python program to check if the input number is odd or even.
+        # A number is even if division by 2 gives a remainder of 0.
+        # If the remainder is 1, it is an odd number.
+        
+        num = int(input("Enter a number: "))
+        if (num % 2) == 0:
+        print("{0} is Even".format(num))
+        else:
+        print("{0} is Odd".format(num))
+    </pre>
+  </div>
+  <br /><br />
+  <button type="button" class="collapsible btn btn-dark">
+    Prime Numbers
+  </button>
+  <div class="content">
+    <pre class="prettyprint">
+# Program to check if a number is prime or not
+    
+    num = 407
+    
+    # To take input from the user
+    #num = int(input("Enter a number: "))
+    
+    # prime numbers are greater than 1
+    if num > 1:
+    # check for factors
+    for i in range(2,num):
+    if (num % i) == 0:
+    print(num,"is not a prime number")
+    print(i,"times",num//i,"is",num)
+    break
+    else:
+    print(num,"is a prime number")
+    
+    # if input number is less than
+    # or equal to 1, it is not prime
+    else:
+    print(num,"is not a prime number")
+</pre
+    >
+  </div>
+</div>
+{% endblock %}
