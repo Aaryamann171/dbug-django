@@ -31,8 +31,9 @@ def pending_view(request, *args, **keywordargs):
 
 
 def request_new_view(request, *args, **keywordargs):
+    username_list = [e.username for e in User.objects.all()]
     context = {
-        "usernames": ["oreo", "bepis", "zio", "vibesomething"]
+        "username_list": username_list
     }
     return render(request, 'review_request.html', context)
 

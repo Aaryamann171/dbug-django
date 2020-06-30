@@ -112,3 +112,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+# redirect to home page after sign up
+LOGIN_REDIRECT_URL = '/home'
