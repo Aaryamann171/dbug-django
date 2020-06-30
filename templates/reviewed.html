@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  style="
+    margin-left: 7em;
+    margin-right: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  "
+>
+  <h1>Already reviewed by others</h1>
+  <br /><br />
+
+  <button type="button" class="collapsible btn btn-dark">One to 10  by <b>akshit sarin</b></button>
+  <div class="content">
+    <pre class="prettyprint">
+        for i in range(10):
+            print i
+    </pre>
+  </div>
+  <br /><br />
+  <button type="button" class="collapsible btn btn-dark">
+    Palindrome by <b>aaryamann</b>
+  </button>
+  <div class="content">
+    <pre class="prettyprint">
+    s = "racecar"
+    if s[::-1] == s:
+        print('palindrome')
+    else:
+        print('not a palindrome')
+</pre
+    >
+  </div>
+</div>
+{% endblock %}

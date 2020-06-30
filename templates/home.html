@@ -17,13 +17,17 @@
 <h1
   style="
     margin-left: 7em;
-    margin-top: 5em;
+    margin-top: 2em;
     font-family: 'Quicksand', sans-serif;
   "
 >
   Let's <span style="color: #335eea;">dbug!</span
   ><img src="static/code.png" height="500" width="500" />
 </h1>
+
+<table>
+<tr>
+<td>
 <form
   action="pending"
   method="GET"
@@ -33,8 +37,24 @@
     font-family: 'Quicksand', sans-serif;
   "
 >
-  <button class="btn btn-primary" type="submit">View Pending Reviews</button>
+  <button class="btn btn-primary" type="submit">Pending Reviews</button>
 </form>
+</td>
+<td>
+<form
+  action="reviewed"
+  method="GET"
+  style="
+    margin-left: 2em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  "
+>
+  <button class="btn btn-primary" type="submit">Already Reviewed</button>
+</td>
+</form>
+</tr>
+</table>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
