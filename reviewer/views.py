@@ -19,7 +19,10 @@ def pending_view(request, *args, **keywordargs):
 
 
 def request_new_view(request, *args, **keywordargs):
-    return render(request, 'review_request.html', {})
+    context = {
+        "usernames": ["oreo", "bepis", "zio", "vibesomething"]
+    }
+    return render(request, 'review_request.html', context)
 
 
 def reviewed_view(request, *args, **keywordargs):

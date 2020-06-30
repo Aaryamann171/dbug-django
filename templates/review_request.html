@@ -18,10 +18,10 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Select Reviewer</label>
     <select class="form-control" id="exampleFormControlSelect1">
-      <option>oreo</option>
-      <option>bepis</option>
-      <option>vaibhav</option>
-      <option>aditya</option>
+    {% for user in usernames %}
+      <option>{{ user }}</option>
+    {% endfor %}
+     
     </select>
   </div>
   
