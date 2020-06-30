@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from reviewer.views import home_view, login_view, pending_view, verify, welcome_view, team_view, about_view, contact_view, reviewed_view
+from reviewer.views import home_view, login_view, pending_view, verify, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home', home_view, name='home'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('about/', about_view),
     path('contact/', contact_view),
     path('team/', team_view),
+    path('request_new/', request_new_view),
 ]

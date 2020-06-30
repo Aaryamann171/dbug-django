@@ -18,6 +18,10 @@ def pending_view(request, *args, **keywordargs):
     return render(request, 'pending.html', {})
 
 
+def request_new_view(request, *args, **keywordargs):
+    return render(request, 'review_request.html', {})
+
+
 def reviewed_view(request, *args, **keywordargs):
     return render(request, 'reviewed.html', {})
 
