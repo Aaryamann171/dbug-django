@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from reviewer.views import home_view, login_view, pending_view, verify, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view
+from reviewer.views import home_view, login_view, pending_view, verify, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view, signup_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home', home_view, name='home'),
     path('login', login_view, name='login'),
+    path('signup', signup_view, name='login'),
     path('', welcome_view, name='welcome'),
     path('verify', verify, name="verify"),
     path('pending', pending_view),

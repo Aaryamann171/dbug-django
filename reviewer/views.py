@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import UserForm
+from .models import User
 
 
 def welcome_view(request, *args, **keywordargs):
@@ -8,6 +10,16 @@ def welcome_view(request, *args, **keywordargs):
 
 def login_view(request, *args, **keywordargs):
     return render(request, 'login.html', {})
+
+
+def signup_view(request, *args, **keywordargs):
+    form = UserForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(request, 'signup.html', context)
 
 
 def home_view(request, *args, **keywordargs):
