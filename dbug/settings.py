@@ -25,7 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'reviewer',
+    'register.apps.RegisterConfig'
 
 ]
 
@@ -114,3 +116,5 @@ STATICFILES_DIRS = [
 ]
 # redirect to home page after sign up
 LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/'
+CRISPY_TEMPLATE_PACK = "bootstrap4"

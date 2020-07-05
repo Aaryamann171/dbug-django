@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import UserForm
-from .models import User
+from django.contrib.auth.models import User
 
 
 def welcome_view(request, *args, **keywordargs):
