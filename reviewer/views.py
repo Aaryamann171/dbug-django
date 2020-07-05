@@ -1,25 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import UserForm
 from django.contrib.auth.models import User
 
 
 def welcome_view(request, *args, **keywordargs):
     return render(request, 'welcome.html', {})
-
-
-def login_view(request, *args, **keywordargs):
-    return render(request, 'login.html', {})
-
-
-def signup_view(request, *args, **keywordargs):
-    form = UserForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-    context = {
-        'form': form
-    }
-    return render(request, 'signup.html', context)
 
 
 def home_view(request, *args, **keywordargs):
@@ -52,12 +37,3 @@ def about_view(request, *args, **keywordargs):
 
 def contact_view(request, *args, **keywordargs):
     return render(request, 'contact.html', {})
-
-
-def verify(request):
-    user_name = (request.POST['n1'])
-    password = (request.POST['p1'])
-    if user_name == password:
-        return render(request, "home.html", {'loggedin': 1})
-    else:
-        return render(request, "error.html", {'loggedin': 0})

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from reviewer.views import home_view, login_view, pending_view, verify, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view, signup_view
+from reviewer.views import home_view, pending_view, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view
 from register.views import register
 
 urlpatterns = [
@@ -8,10 +8,7 @@ urlpatterns = [
     path('home', home_view, name='home'),
     path("register/", register, name='register'),
     path('', include("django.contrib.auth.urls")),
-    path('login', login_view, name='login'),
-    path('signup', signup_view, name='login'),
     path('', welcome_view, name='welcome'),
-    path('verify', verify, name="verify"),
     path('pending', pending_view),
     path('reviewed', reviewed_view),
     path('about/', about_view),
