@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-
+<!-- 
 <div
   style="
     margin-left: 7em;
@@ -32,5 +32,39 @@
   <button class="btn btn-success" type="submit">Send Review Request</button>
 </form>
 
+</div> -->
+
+<div style="
+    margin-left: 7em;
+    margin-right: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  ">
+
+  <h1>Send review request</h1>
+  <br><br>
+  <form action="/sendRequest/" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="code">Upload Code</label>
+      <input type="text" class="code" id="codeInput" name="codeInput" placeholder="Type Your Code">
+    </div>
+    <div class="form-group">
+      <label for="reviewerUsername">Select Reviewer</label>
+      <select class="reviewer" id="reviewerInput" name="reviewerInput">
+        {% for user in username_list %}
+        <option>{{ user }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="commentsText">Any Comments For the Reviewer?</label>
+      <textarea class="comment" id="commentInput" name="commentInput" rows="3"></textarea>
+    </div>
+    <button class="btn btn-success" type="submit">Send Review Request</button>
+  </form>
+
 </div>
+
 {% endblock %}
