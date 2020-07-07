@@ -10,20 +10,25 @@
   {% if rf|length > 0 %}
   {% for r in rf %}
   {% for c in cs %}
-  {% if forloop.counter == forloop.parentloop.counter %}
+  {% for i in id %}
+
+  {% if forloop.counter == forloop.parentloop.counter == forloop.parentloop.parentloop.counter %}
   <div style="margin-bottom: 2em;">
 
     <button type=" button" class="collapsible btn btn-dark">request from
-      <b>{{ r }}</b></button>
+      <b>{{ r }}</b> request id <b>{{i}}</b> </button>
     <div class="content">
       <pre class="prettyprint">
           {{ c|safe|linebreaks }}
         </pre>
+      <button class='btn btn-primary' style="margin-bottom: 20px;">review now</button>
     </div>
   </div>
   {% endif %}
   {% endfor %}
   {% endfor %}
+  {% endfor %}
+
   {% else %}
 
   <div class="jumbotron">

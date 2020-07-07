@@ -26,9 +26,10 @@ def pending_view(request, *args, **keywordargs):
     req_from = [e.req_from for e in ReviewRequest.objects.all()
                 if e.req_to == user]
     rf = ''.join(req_from)
-
+    req_id = [e.id for e in ReviewRequest.objects.all()
+              if e.req_to == user]
     # context = {"cs": cs, "rf": rf}
-    context = {"cs": code_snippet, "rf": req_from}
+    context = {"cs": code_snippet, "rf": req_from, "id": req_id}
     return render(request, 'pending.html', context)
 
 
