@@ -57,18 +57,18 @@ def contact_view(request, *args, **keywordargs):
     return render(request, 'contact.html', {})
 
 
-def send_review_request_mail(code, reviewer_id, comment):
+def send_review_request_mail(code, email_id, username, comment):
     to_send = EmailMessage()
 
-    msg = "Hi " + str(reviewer_id) + "!\n\n" + \
-        "This automated message was sent to you because you have a new Review Request!\n\n" + \
-        "Details are as follows -\nCode: " + str(code) + "\nComments: \n" + str(comment) + "\n\n" + \
+    msg = "Hi " + str(username) + "!\n\n" + \
+        "This automated message was sent to you because you have a new review request!\n\n" + \
+        "Details -\nCode: " + str(code) + "\nComments: \n" + str(comment) + "\n\n" + \
         "Have a nice day!\nTeam d.bug"
 
     to_send.set_content(msg)
 
     to_send['From'] = "reviewalert.dbug@gmail.com"
-    to_send['To'] = "akshitsarin99@gmail.com, aaryamann171@gmail.com"
+    to_send['To'] = str(email_id)
     to_send['Subject'] = "d.bug : New Review Request Recieved!"
 
     s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -79,11 +79,17 @@ def send_review_request_mail(code, reviewer_id, comment):
 
 def send_request(request):
     context = {}
+    username = request.POST.get('reviewerInput')
+    email_id = ""
+
+    for i in User.objects.raw('SELECT * FROM auth_user WHERE username = %s', [username]):
+    	email_id = i.email
 
     if request.method == 'POST':
         data = {
             'codeInput': request.POST.get('codeInput'),
-            'reviewerInput': request.POST.get('reviewerInput'),
+            'email_id': email_id,
+            'username': username,
             'commentInput': request.POST.get('commentInput')
         }
 
@@ -91,7 +97,8 @@ def send_request(request):
 
         send_review_request_mail(
             data['codeInput'],
-            data['reviewerInput'],
+            data['email_id'],
+            data['username'],
             data['commentInput']
         )
 

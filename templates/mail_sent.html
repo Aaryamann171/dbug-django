@@ -8,13 +8,12 @@
     font-family: 'Quicksand', sans-serif;
   "
 >
-	<h1>Congratulations</h1>
-	<p>Your Review Request has been <span style="color: #335eea">sent!</span></p>
+	<h1>Congratulations!</h1>
+	<p>Your Review Request has been sent to <span style="color: #335eea"> {{ username }}</span></p>
 	<br><br>
 
 	<h3>Details: </h3><br>
-	<p><strong>Code:</strong></p><br> {{ codeInput }}
-	<p><strong>ReviewerID:</strong></p><br> {{ reviewerInput }}
-	<p><strong>Comments:</strong></p><br> {{ commentInput }}
+	<p><strong>Code:</strong></p> {{ codeInput }} <br><br>
+	<p><strong>Comments:</strong></p> {{ commentInput }}
 </div>
 {% endblock %}
