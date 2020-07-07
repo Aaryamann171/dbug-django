@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 {% if user.is_authenticated %}
 
@@ -25,12 +24,11 @@
   <tr>
     <td>
       {% if user.is_authenticated %}
-      <h1 class="display-4" style=" margin-left: 4em;">Welcome, <span
+      <h1 class="display-4" style=" margin-left: 4em; font-family: 'Quicksand', sans-serif;">Welcome, <span
           style=" color: #335eea;"><b>{{ user.get_username }}</b>
         </span></h1>
       {% endif %}
-      <h1 style="
-             margin-left: 7em;" margin-top: 1em; font-family: 'Quicksand' , sans-serif; ">
+      <h1 style=" margin-left: 7em; margin-top: 1em; font-family: 'Quicksand', sans-serif;">
         <span style=" font-weight: 200;">Let's </span>dbug! <svg width=" 1em" height="1em" viewBox="0 0 16 16"
           class="bi bi-bug" fill="red" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"

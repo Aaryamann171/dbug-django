@@ -10,24 +10,26 @@
   {% if rf|length > 0 %}
   {% for r in rf %}
   {% for c in cs %}
+  {% for comment in comments %}
   {% for i in id %}
 
-  {% if forloop.counter == forloop.parentloop.counter == forloop.parentloop.parentloop.counter %}
+  {% if forloop.counter == forloop.parentloop.counter == forloop.parentloop.parentloop.counter == forloop.parentloop.parentloop.parentloop.counter %}
   <div style="margin-bottom: 2em;">
 
     <button type=" button" class="collapsible btn btn-dark">request from
-      <b>{{ r }}</b> request id <b>{{i}}</b> </button>
+      <strong>{{ r }}</strong><br> request id <strong>{{i}}</strong> </button>
     <div class="content">
       <pre class="prettyprint">
           {{ c|safe|linebreaks }}
         </pre>
         Comments: <br>
-        Dynamic Text [ to be added ] 
+        {{ comment }}
         <hr>
       <button class='btn btn-primary' style="margin-bottom: 20px;">review now</button>
     </div>
   </div>
   {% endif %}
+  {% endfor %}
   {% endfor %}
   {% endfor %}
   {% endfor %}

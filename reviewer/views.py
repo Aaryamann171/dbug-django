@@ -28,8 +28,12 @@ def pending_view(request, *args, **keywordargs):
     rf = ''.join(req_from)
     req_id = [e.id for e in Pending_Requests.objects.all()  \
         if e.req_to == user]
-    # context = {"cs": cs, "rf": rf}
-    context = {"cs": code_snippet, "rf": req_from, "id": req_id}
+
+    comments = [e.comments for e in Pending_Requests.objects.all()  \
+        if e.req_to == user]
+
+    context = {"cs": code_snippet, "rf": req_from,
+               "comments": comments, "id": req_id}
     return render(request, 'pending.html', context)
 
 
@@ -105,7 +109,7 @@ def send_request(request):
 
     # add new request to pending db
     x = Pending_Requests(code = data['codeInput'], req_from = request.user.username, \
-        req_to = data['username'])
+        req_to = data['username'], comments = data['commentInput'])
     x.save()
     
     return render(request, 'mail_sent.html', context)
