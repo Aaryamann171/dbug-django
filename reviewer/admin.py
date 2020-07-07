@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import ReviewRequest
+from .models import Pending_Requests
 # Register your models here.
-admin.site.register(ReviewRequest)
+admin.site.register(Pending_Requests)

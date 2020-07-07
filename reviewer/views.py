@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .models import ReviewRequest
+from .models import Pending_Requests
 
 import smtplib
 from email.message import EmailMessage
@@ -19,15 +19,15 @@ def home_view(request, *args, **keywordargs):
 #     return render(request, 'pending.html', {})
 def pending_view(request, *args, **keywordargs):
     user = request.user.username
-    code_snippet = [e.code for e in ReviewRequest.objects.all()
-                    if e.req_to == user]
+    code_snippet = [e.code for e in Pending_Requests.objects.all()  \
+        if e.req_to == user]
 
     cs = ''.join(code_snippet)
-    req_from = [e.req_from for e in ReviewRequest.objects.all()
-                if e.req_to == user]
+    req_from = [e.req_from for e in Pending_Requests.objects.all()  \
+        if e.req_to == user]
     rf = ''.join(req_from)
-    req_id = [e.id for e in ReviewRequest.objects.all()
-              if e.req_to == user]
+    req_id = [e.id for e in Pending_Requests.objects.all()  \
+        if e.req_to == user]
     # context = {"cs": cs, "rf": rf}
     context = {"cs": code_snippet, "rf": req_from, "id": req_id}
     return render(request, 'pending.html', context)
@@ -82,6 +82,7 @@ def send_request(request):
     username = request.POST.get('reviewerInput')
     email_id = ""
 
+    # send email notification to reviewer
     for i in User.objects.raw('SELECT * FROM auth_user WHERE username = %s', [username]):
     	email_id = i.email
 
@@ -102,4 +103,9 @@ def send_request(request):
             data['commentInput']
         )
 
+    # add new request to pending db
+    x = Pending_Requests(code = data['codeInput'], req_from = request.user.username, \
+        req_to = data['username'])
+    x.save()
+    
     return render(request, 'mail_sent.html', context)
