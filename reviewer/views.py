@@ -222,4 +222,50 @@ def review_submitted(request):
     x.save()
 
 
-    return render(request, 'review_submitted.html', context) 
+    return render(request, 'review_submitted.html/', context) 
+
+
+def sent_pending_view(request):
+    user = request.user.username
+    code_snippets = [e.code for e in Pending_Requests.objects.all()
+                     if e.req_from == user]
+
+    req_from = [e.req_from for e in Pending_Requests.objects.all()
+                if e.req_from == user]
+
+    req_id = [e.id for e in Pending_Requests.objects.all()
+              if e.req_from == user]
+
+    comments = [e.comments for e in Pending_Requests.objects.all()
+                if e.req_from == user]
+
+    data = zip(code_snippets, req_from, comments, req_id)
+
+    context = {"data": tuple(data)}
+    return render(request, 'pending_sent.html', context)
+
+
+def done_for_me_view(request):
+    user = request.user.username
+    code_snippets = [e.code for e in Done_Requests.objects.all()
+                     if e.req_from == user]
+
+    req_from = [e.req_from for e in Done_Requests.objects.all()
+                if e.req_from == user]
+
+    req_id = [e.id for e in Done_Requests.objects.all()
+              if e.req_from == user]
+
+    comments = [e.comments for e in Done_Requests.objects.all()
+                if e.req_from == user]
+
+    reviews = [e.reviews_added for e in Done_Requests.objects.all()
+               if e.req_from == user]
+
+    reviewed_by = [e.req_to for e in Done_Requests.objects.all()
+                   if e.req_from == user]
+
+    data = zip(code_snippets, req_from, comments, req_id, reviews, reviewed_by)
+
+    context = {"data": tuple(data)}
+    return render(request, 'done_for_me.html', context)

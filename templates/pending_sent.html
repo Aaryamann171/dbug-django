@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+
+<div style="
+    margin-left: 7em;
+    margin-right: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  ">
+  
+  <h1 style="padding-bottom: 2em;">Pending Reviews for <span style=" color: #335eea;">{{ user.get_username }}
+  </span></h1>
+
+  {% if data|length > 0 %}
+  {% for code,req_from,comment, id in data %}
+
+  <div style="margin-bottom: 2em;">
+    <button type=" button" class="collapsible btn btn-dark">request from
+      <strong> {{ req_from }} </strong><br> request id <strong>{{ id }}</strong> </button>
+    <div class="content">
+      <pre class="prettyprint">
+            {{ code|safe|linebreaks }}
+          </pre>
+      Comments: <br>
+      {{ comment }}
+      <hr>
+      <form action="review/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="req_id" value="{{ id }}" />
+        <input type="hidden" name="code_snippet" value="{{ code }}" />
+        <input type="hidden" name="req_from" value="{{ req_from }}" />
+        <input type="hidden" name="comment" value="{{ comment }}" />
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+
+  <div class="jumbotron">
+    <h4 style="font-weight: 100;">You don't have any pending requests at the moment!</h1>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
