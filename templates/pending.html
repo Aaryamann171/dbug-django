@@ -23,9 +23,9 @@
       <form action="review/" method="POST">
         {% csrf_token %}
         <input type="hidden" name="req_id" value={{ id }} />
-        <input type="hidden" name="code_snippet" value={{ code }} />
-        <input type="hidden" name="req_from" value={{ req_from }} />
-        <input type="hidden" name="comment" value={{ comment }} />
+        <input type="hidden" name="code_snippet" value="{{ code }}" />
+        <input type="hidden" name="req_from" value="{{ req_from }}" />
+        <input type="hidden" name="comment" value="{{ comment }}" />
         <button type="submit" class='btn btn-primary' style="margin-bottom: 20px;">review now</button>
       </form>
     </div>

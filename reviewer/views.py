@@ -51,13 +51,13 @@ def reviewed_view(request, *args, **keywordargs):
 
 
 def review(request, *args, **keywordargs):
-    data = {
+    context = {
         'rid': request.POST.get('req_id'),
         'cs': request.POST.get('code_snippet'),
         'rf': request.POST.get('req_from'),
         'comment': request.POST.get('comment'),
     }
-    context = data
+
     return render(request, 'review_page.html', context)
 
 
