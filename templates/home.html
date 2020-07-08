@@ -25,7 +25,7 @@
     <td>
       {% if user.is_authenticated %}
       <h1 class="display-4" style=" margin-left: 4em; font-family: 'Quicksand', sans-serif;">Welcome, <span
-          style=" color: #335eea;"><b>{{ user.get_username }}</b>
+          style=" color: #335eea;"><strong>{{ user.get_username }}</strong>
         </span></h1>
       {% endif %}
       <h1 style=" margin-left: 7em; margin-top: 1em; font-family: 'Quicksand', sans-serif;">
@@ -40,7 +40,7 @@
 
 
 
-<table>
+<table style="margin-bottom: 6em;">
   <tr>
     <td>
       <form action="pending" method="GET" style="
@@ -48,13 +48,28 @@
       margin-top: 5em;
       font-family: 'Quicksand', sans-serif;
     ">
-        <button class="btn btn-warning" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
+        <button class="btn btn-danger" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
             class="bi bi-hourglass-split" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13s-.866-1.299-3-1.48V8.35z" />
-          </svg> Pending Reviews</button>
+          </svg> Pending Reviews For Me</button>
       </form>
     </td>
+
+    <td>
+      <form method="GET" style="
+          margin-left: 2em;
+          margin-top: 5em;
+          font-family: 'Quicksand', sans-serif;
+        ">
+        <button class="btn btn-outline-danger" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
+            class="bi bi-hourglass-split" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13s-.866-1.299-3-1.48V8.35z" />
+          </svg> Pending Requests Sent</button>
+      </form>
+    </td>
+
     <td>
       <form action="reviewed" method="GET" style="
       margin-left: 2em;
@@ -69,9 +84,28 @@
               d="M2 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2z" />
             <path fill-rule="evenodd"
               d="M8.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 8 8.646 6.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 8l1.647-1.646a.5.5 0 0 0 0-.708z" />
-          </svg> Already Reviewed</button>
-    </td>
-    </form>
+          </svg> Already Reviewed By Me</button>
+        </form>
+      </td>
+
+      <td>
+        <form method="GET" style="
+            margin-left: 2em;
+            margin-top: 5em;
+            font-family: 'Quicksand', sans-serif;
+          ">
+          <button class="btn btn-outline-dark" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16"
+              class="bi bi-journal-code" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1H2a2 2 0 0 1 2-2z" />
+              <path
+                d="M2 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2z" />
+              <path fill-rule="evenodd"
+                d="M8.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 8 8.646 6.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 8l1.647-1.646a.5.5 0 0 0 0-.708z" />
+            </svg> Code Reviewed By Me</button>
+        </form>
+      </td>
+  
   </tr>
 </table>
 {% else %}

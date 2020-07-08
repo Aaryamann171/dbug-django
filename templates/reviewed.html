@@ -7,7 +7,8 @@
     font-family: 'Quicksand', sans-serif;
   ">
 
-  <h1 style="padding-bottom: 2em;">Already reviewed</h1>
+  <h1 style="padding-bottom: 2em;">Already reviewed by <span style=" color: #335eea;">{{ user.get_username }}
+  </span></h1>
 
   {% if data|length > 0 %}
   {% for code,req_from,comment, id, review in data %}
@@ -28,7 +29,7 @@
 
   {% else %}
   <div class="jumbotron">
-    <h4 style="font-weight: 100;">You haven't reviewd any requests at the moment!</h4>
+    <h4 style="font-weight: 100;">You haven't reviewed any requests at the moment!</h4>
   </div>
 
   {% endif %}

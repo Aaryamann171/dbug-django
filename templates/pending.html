@@ -7,7 +7,8 @@
     font-family: 'Quicksand', sans-serif;
   ">
   
-  <h1 style="padding-bottom: 2em;">Pending</h1>
+  <h1 style="padding-bottom: 2em;">Pending Reviews for <span style=" color: #335eea;">{{ user.get_username }}
+  </span></h1>
 
   {% if data|length > 0 %}
   {% for code,req_from,comment, id in data %}
