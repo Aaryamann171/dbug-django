@@ -19,21 +19,22 @@ def home_view(request, *args, **keywordargs):
 #     return render(request, 'pending.html', {})
 def pending_view(request, *args, **keywordargs):
     user = request.user.username
-    code_snippet = [e.code for e in Pending_Requests.objects.all()  \
-        if e.req_to == user]
+    code_snippet = [e.code for e in Pending_Requests.objects.all()
+                    if e.req_to == user]
 
-    cs = ''.join(code_snippet)
-    req_from = [e.req_from for e in Pending_Requests.objects.all()  \
-        if e.req_to == user]
-    rf = ''.join(req_from)
-    req_id = [e.id for e in Pending_Requests.objects.all()  \
-        if e.req_to == user]
+    # cs = ''.join(code_snippet)
+    req_from = [e.req_from for e in Pending_Requests.objects.all()
+                if e.req_to == user]
+    # rf = ''.join(req_from)
+    req_id = [e.id for e in Pending_Requests.objects.all()
+              if e.req_to == user]
 
-    comments = [e.comments for e in Pending_Requests.objects.all()  \
-        if e.req_to == user]
-
-    context = {"cs": code_snippet, "rf": req_from,
-               "comments": comments, "id": req_id}
+    comments = [e.comments for e in Pending_Requests.objects.all()
+                if e.req_to == user]
+    data = zip(code_snippet, req_from, comments, req_id)
+    # context = {"cs": code_snippet, "rf": req_from,
+    #            "comments": comments, "id": req_id, "data": data}
+    context = {"data": tuple(data)}
     return render(request, 'pending.html', context)
 
 
@@ -47,6 +48,17 @@ def request_new_view(request, *args, **keywordargs):
 
 def reviewed_view(request, *args, **keywordargs):
     return render(request, 'reviewed.html', {})
+
+
+def review(request, *args, **keywordargs):
+    data = {
+        'rid': request.POST.get('req_id'),
+        'cs': request.POST.get('code_snippet'),
+        'rf': request.POST.get('req_from'),
+        'comment': request.POST.get('comment'),
+    }
+    context = data
+    return render(request, 'review_page.html', context)
 
 
 def team_view(request, *args, **keywordargs):
@@ -88,7 +100,7 @@ def send_request(request):
 
     # send email notification to reviewer
     for i in User.objects.raw('SELECT * FROM auth_user WHERE username = %s', [username]):
-    	email_id = i.email
+        email_id = i.email
 
     if request.method == 'POST':
         data = {
@@ -108,8 +120,8 @@ def send_request(request):
         )
 
     # add new request to pending db
-    x = Pending_Requests(code = data['codeInput'], req_from = request.user.username, \
-        req_to = data['username'], comments = data['commentInput'])
+    x = Pending_Requests(code=data['codeInput'], req_from=request.user.username,
+                         req_to=data['username'], comments=data['commentInput'])
     x.save()
-    
+
     return render(request, 'mail_sent.html', context)

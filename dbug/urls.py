@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from reviewer.views import home_view, pending_view, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view, send_request
+from reviewer.views import home_view, pending_view, welcome_view, team_view, about_view, contact_view, reviewed_view, request_new_view, send_request, review
 from register.views import register
 
 urlpatterns = [
@@ -16,4 +16,5 @@ urlpatterns = [
     path('team/', team_view),
     path('request_new/', request_new_view),
     path('sendRequest/', send_request),
+    path('review/', review),
 ]
