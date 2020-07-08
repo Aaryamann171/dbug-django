@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  style="
+    margin-left: 7em;
+    margin-right: 7em;
+    margin-top: 5em;
+    font-family: 'Quicksand', sans-serif;
+  "
+>
+	<h1>Congratulations <span style="color: #335eea"> {{ req_to }}!</span></h1>
+	<p>Your Review has been sent to <span style="color: #335eea"> {{ req_from }}</span></p>
+	<p>review id {{ rev_id }}</p>
+	<br><br>
+
+	<h3>Details: </h3><br>
+	<p><strong>Code:</strong></p> {{ code }} <br><br>
+	<p><strong>Comments:</strong></p> {{ comments }}<br><br>
+	<p><strong>Review:</strong></p> {{ reviews_added }}<br><br>
+	<p></p>
+</div>
+{% endblock %}

@@ -12,12 +12,21 @@
 
     <p><strong>Code:</strong></p>
     <div class="container">
-        <textarea name="code" id="" cols="100" rows="20">{{ cs }}</textarea>
+        <textarea name="code" id="" cols="100" rows="16">{{ cs }}</textarea>
     </div>
-    <button style="margin-left: 40%; margin-top: 40px" class="btn btn-primary" type="submit">submit review</button>
     <p><strong>Comments:</strong></p> {{ comment }}
+    <form action="/review_submitted/" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="code" id="code" value="{{ cs }}">
+      <input type="hidden" name="req_from" id="req_from" value="{{ rf }}">
+      <input type="hidden" name="rev_id" id="rev_id" value="{{ rid }}">
+      <input type="hidden" name="comments" id="comments" value="{{ comment }}">
+      <br>
+      <p><strong>Add Review-</strong></p>
+      <input type="text" id="review_submitted" name="review_submitted" placeholder="Add Reviews...">
+      <!-- reviewer name passed through views.py -->
+      <button style="margin-left: 40%; margin-top: 40px" class="btn btn-primary" type='submit'>Submit Review?</button>
+    </form>
 </div>
-
-
 
 {% endblock %}

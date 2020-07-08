@@ -1,36 +1,36 @@
 {% extends "base.html" %} {% block content %}
 
-<div
-  style="
+<div style="
     margin-left: 7em;
     margin-right: 7em;
     margin-top: 5em;
     font-family: 'Quicksand', sans-serif;
-  "
->
-  <h1>Already reviewed by others</h1>
-  <br /><br />
+  ">
 
-  <button type="button" class="collapsible btn btn-dark">One to 10  by <b>akshit sarin</b></button>
-  <div class="content">
-    <pre class="prettyprint">
-        for i in range(10):
-            print i
-    </pre>
+  <h1 style="padding-bottom: 2em;">Already reviewed</h1>
+
+  {% if data|length > 0 %}
+  {% for code,req_from,comment, id, review in data %}
+
+  <div style="margin-bottom: 2em;">
+    <button type="button" class="collapsible btn btn-dark">request from 
+      <strong> {{ req_from }} </strong><br> request id <strong>{{ id }}</strong></button>
+    
+    <div class="content">
+      <pre class="prettyprint">
+        {{ code|safe|linebreaks }}
+      </pre>
+      Comments: <br> {{ comment }} <hr>
+      Reviews: <br> {{ review }}
+    </div>
   </div>
-  <br /><br />
-  <button type="button" class="collapsible btn btn-dark">
-    Palindrome by <b>aaryamann</b>
-  </button>
-  <div class="content">
-    <pre class="prettyprint">
-    s = "racecar"
-    if s[::-1] == s:
-        print('palindrome')
-    else:
-        print('not a palindrome')
-</pre
-    >
+  {% endfor %}
+
+  {% else %}
+  <div class="jumbotron">
+    <h4 style="font-weight: 100;">You haven't reviewd any requests at the moment!</h4>
   </div>
+
+  {% endif %}
 </div>
 {% endblock %}
