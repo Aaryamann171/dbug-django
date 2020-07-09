@@ -34,7 +34,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -112,26 +111,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 # dont delete, images break for some reason
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"), 
-    # '/var/www/static/',
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
 ]
-
 # redirect to home page after sign up
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-
-if os.getcwd() == '/app':
-    import dj_database_url
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-    ALLOWED_HOSTS = ['d-bug.herokuapp.com']
-    DEBUG = True
-
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))

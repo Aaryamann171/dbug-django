@@ -1,1 +1,0 @@
-web: gunicorn dbug.wsgi --log-file -
