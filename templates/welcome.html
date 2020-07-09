@@ -1,29 +1,97 @@
 {% extends "base.html" %} {% block content %}
 
 <h1 style="
-		margin-left: 7em; 
-		margin-top: 5em; 
+		margin-left: 5em; 
+		margin-top: 100px; 
 		font-family: 'Quicksand', sans-serif;">
-	welcome to <span style="color: #335eea">D.BUG</span>
+	welcome to <span style="color: #335eea"><strong>d.bug</strong></span>
 </h1>
 
 
 {% if user.is_authenticated %}
-<button class="btn btn-light" style="margin-left: 18em; margin-top: 8em; color: #000"><a
-		href="home">homepage</a></button>
+<button class="btn btn-light btn-lg" style="margin-left: 12em; margin-top: 0em; margin-right: 10em"><a
+		href="home" style="text-decoration: none;">Homepage</a></button>
 
 {% else %}
-<button class="btn btn-primary" style="margin-left: 18em; margin-top: 8em"><a href="register/">
-		<span style="color: #ffffff">
-			register now
-		</span>
+
+<button class="btn btn-primary btn-lg" style="margin-left: 12em; margin-top: 0em;"><a href="login/" style="text-decoration: none; color: white;" >Login</a></button>
+
+<button class="btn btn-light btn-lg" style="margin-left: 0.6em; margin-top: 0em; margin-right: 6em;"><a href="register/" style="text-decoration: none">
+		<span>	Sign Up	</span>
 	</a></button>
-<button class="btn btn-light" style="margin-left: 0.5em; margin-top: 8em; color: #000"><a href="login/">log
-		in</a></button>
+	
 {% endif %}
-<!-- <img src="static/" alt="image"> -->
-<img src="static/git_coder.png" height="500" width="500">
+<img src="static/git_coder.png" height="600" width="600">
 <!-- <button class="btn btn-primary" style="" >Sign-In -></button> -->
+
+<table class="table table-borderless" 
+	style="
+		margin-left: 12em; 
+		/* margin-right: 14em; */
+		table-layout: fixed;
+		width: 80em;
+		font-family: 'Quicksand', sans-serif;">
+	<thead>
+		<tr>
+			
+			<th scope="col">
+				<svg width="3.5em" height="3.5em" viewBox="0 0 16 16" class="bi bi-app-indicator" fill="#007BFF"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z" />
+					<path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+				</svg>
+			</th>
+
+			<th scope="col">
+				<svg width="3.5em" height="3.5em" viewBox="0 0 16 16" class="bi bi-terminal" fill="#007BFF"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M14 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z" />
+					<path fill-rule="evenodd"
+						d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.146 4.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 1 1-.708-.708L4.793 6.5 3.146 4.854a.5.5 0 0 1 0-.708z" />
+				</svg>
+			</th>
+			
+			<th scope="col">
+				<svg width="3.5em" height="3.5em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="#007BFF"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+					<path fill-rule="evenodd" d="M13 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z" />
+				</svg>
+			</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="width: 60px; font-size: 20px"><strong>get instant notifications</strong></td>
+			<td style="width: 60px; font-size: 20px"><strong>in-built code editor</strong></td>
+			<td style="width: 60px; font-size: 20px"><strong>personalised reviews</strong></td>
+		</tr>
+		<tr>
+			<td style="width: 60px; font-size: 18px">
+				get instant e-mail notifications about <br>
+				the details of new review requests, as <br>
+				well as reviewed requests.
+			</td>
+
+			<td style="margin-left: 0px; width: 60px; font-size: 18px">
+				type code in real-time with syntax <br>
+				highlighting support for all major <br> languages
+			</td>
+			
+			<td style="width: 60px; font-size: 18px; margin-right: 10em;">
+				send your review requests to <br> 
+				personlised and trusted people,<br> 
+				keeping your code private and <br> 
+				secure.
+			</td>
+		</tr>
+	</tbody>
+</table>
+
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
