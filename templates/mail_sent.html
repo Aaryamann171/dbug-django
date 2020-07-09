@@ -13,7 +13,9 @@
 	<br><br>
 
 	<h3>Details: </h3><br>
-	<p><strong>Code:</strong></p> {{ codeInput }} <br><br>
-	<p><strong>Comments:</strong></p> {{ commentInput }}
-</div>
+		<p><strong>Code:</strong></p>
+		<pre class="prettyprint">	{{ codeInput|safe|linebreaks }}</pre>
+		<br>
+	<p style="margin-bottom: 40px;"><strong>Comments:</strong><br> {{ commentInput }} </p>
+</div> 
 {% endblock %}

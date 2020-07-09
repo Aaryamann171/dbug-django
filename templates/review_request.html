@@ -12,21 +12,23 @@
   <form action="/sendRequest/" method="POST">
     {% csrf_token %}
     <div class="form-group">
-      <label for="code">Upload Code</label>
-      <input type="text" class="code" id="codeInput" name="codeInput" placeholder="Type Your Code">
+      <label for="code" style="font-size: 18px;"><strong>Code</strong></label><br>
+      <textarea class="code" id="codeInput" name="codeInput" rows="10" cols="80"></textarea><br><br>
+      <!-- <input type="text" class="code" id="codeInput" name="codeInput" placeholder="Type Your Code"> -->
     </div>
+
     <div class="form-group">
-      <label for="reviewerUsername">Select Reviewer</label>
+      <label for="reviewerUsername" style="font-size: 18px;"><strong>Select Reviewer</strong></label>
       <select class="reviewer" id="reviewerInput" name="reviewerInput">
         {% for user in username_list %}
         <option>{{ user }}</option>
         {% endfor %}
-      </select>
+      </select><br><br>
     </div>
 
     <div class="form-group">
-      <label for="commentsText">Any Comments For the Reviewer?</label>
-      <textarea class="comment" id="commentInput" name="commentInput" rows="3"></textarea>
+      <label for="commentsText" style="font-size: 18px;"><strong>Any Comments/Instructions For the Reviewer?</strong></label><br>
+      <textarea class="comment" id="commentInput" name="commentInput" rows="6" cols="60"></textarea>
     </div>
     <button class="btn btn-success" type="submit">Send Review Request</button>
   </form>

@@ -75,7 +75,7 @@ def review(request, *args, **keywordargs):
         'rid': request.POST.get('req_id'),
         'cs': request.POST.get('code_snippet'),
         'rf': request.POST.get('req_from'),
-        'comment': request.POST.get('comment'),
+        'comment': request.POST.get('comment')
     }
 
     return render(request, 'review_page.html', context)
@@ -191,7 +191,7 @@ def review_submitted(request):
             'req_to': username_req_to,
             'email_id_req_from': email_id_req_from,
             'comments': request.POST.get('comments'),
-            'review_submitted': request.POST.get('review_submitted')
+            'review_submitted': request.POST.get('review_text')
         }
     
     # send notification (code reviewed)
