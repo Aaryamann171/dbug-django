@@ -6,29 +6,31 @@
     margin-top: 5em;
     font-family: 'Quicksand', sans-serif;
   ">
-    <h1>Let's dbug!</h1>
-    <h4>Reviewing Request from <span style="color: #335eea"> {{ rf }}</span></h4>
-    <p>request id <strong>{{ rid }}</strong></p>
-    <br>
+  <h1>Let's dbug!</h1>
+  <h4>Reviewing Request from <span style="color: #335eea"> {{ rf }}</span></h4>
+  <p>request id <strong>{{ rid }}</strong></p>
+  <br>
 
-    <p><strong>Code:</strong></p>
-    <pre class="prettyprint">	{{ cs|safe|linebreaks }}</pre>
+  <p><strong>Code:</strong></p>
+  <pre class="prettyprint">	{{ cs|safe|linebreaks }}</pre>
+  <br>
+  <p><strong>Comments for the reviewer:</strong></p> {{ comment }}
+  <form action="/review_submitted/" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="code" id="code" value="{{ cs }}">
+    <input type="hidden" name="req_from" id="req_from" value="{{ rf }}">
+    <input type="hidden" name="rev_id" id="rev_id" value="{{ rid }}">
+    <input type="hidden" name="comments" id="comments" value="{{ comment }}">
     <br>
-    <p><strong>Comments for the reviewer:</strong></p> {{ comment }}
-    <form action="/review_submitted/" method="POST">
-      {% csrf_token %}
-      <input type="hidden" name="code" id="code" value="{{ cs }}">
-      <input type="hidden" name="req_from" id="req_from" value="{{ rf }}">
-      <input type="hidden" name="rev_id" id="rev_id" value="{{ rid }}">
-      <input type="hidden" name="comments" id="comments" value="{{ comment }}">
-      <br>
-      <p><strong>Add a review...</strong></p>
-      <!-- <input type="text" id="review_submitted" name="review_submitted" placeholder="Add Reviews..."> -->
+    <p><strong>Add a review...</strong></p>
+    <!-- <input type="text" id="review_submitted" name="review_submitted" placeholder="Add Reviews..."> -->
 
-      <textarea class="review_text" id="review_text" name="review_text" rows="6" cols="60" placeholder="Type text..."></textarea>
-      <!-- reviewer name passed through views.py -->
-      <button style="margin-left: 40%; margin-top: 40px; margin-bottom: 40px;" class="btn btn-primary" type='submit'>Submit Review?</button>
-    </form>
+    <textarea class="review_text" id="review_text" name="review_text" rows="6" cols="60"
+      placeholder="Type text..."></textarea>
+    <!-- reviewer name passed through views.py -->
+    <button style="margin-left: 40%; margin-top: 40px; margin-bottom: 40px;" class="btn btn-primary"
+      type='submit'>Submit Review?</button>
+  </form>
 </div>
 
 {% endblock %}

@@ -20,4 +20,4 @@ urlpatterns = [
     path('review_submitted/', review_submitted),
     path('sent_pending/', sent_pending_view),
     path('done_for_me/', done_for_me_view)
-] 
+]

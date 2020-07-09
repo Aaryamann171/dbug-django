@@ -12,9 +12,10 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
   <style>
-    body{
+    body {
       overflow-x: hidden;
     }
+
     .navbar {
       font-family: 'Quicksand', sans-serif;
       margin-top: 2em;
@@ -83,25 +84,25 @@
     <a href="http://127.0.0.1:8000/team" style="text-decoration: none;">
       <h6>Team</h6>
     </a>
-    <a href="http://127.0.0.1:8000/about"style= "text-decoration: none;">
+    <a href="http://127.0.0.1:8000/about" style="text-decoration: none;">
       <h6>About</h6>
     </a>
-    <a href="http://127.0.0.1:8000/contact" style= "text-decoration: none;">
+    <a href="http://127.0.0.1:8000/contact" style="text-decoration: none;">
       <h6>Contact Us</h6>
     </a>
     {% if user.is_authenticated %}
     <button class="btn btn-primary" style="display: inline-flex;
   align-items: center; margin-top: -10px;">
-    <a href="out/" style="margin-top: 6px; text-decoration: none;">
-      <h6 style="color: white;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-            d="M4.354 11.354a.5.5 0 0 0 0-.708L1.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z" />
-          <path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5z" />
-          <path fill-rule="evenodd"
-            d="M14 13.5a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 14 2.5H7A1.5 1.5 0 0 0 5.5 4v1.5a.5.5 0 0 0 1 0V4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-1.5a.5.5 0 0 0-1 0V12A1.5 1.5 0 0 0 7 13.5h7z" />
-        </svg> logout</h6>
-    </a></button>
+      <a href="logout/" style="margin-top: 6px; text-decoration: none;">
+        <h6 style="color: white;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-left"
+            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.354 11.354a.5.5 0 0 0 0-.708L1.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z" />
+            <path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5z" />
+            <path fill-rule="evenodd"
+              d="M14 13.5a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 14 2.5H7A1.5 1.5 0 0 0 5.5 4v1.5a.5.5 0 0 0 1 0V4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-1.5a.5.5 0 0 0-1 0V12A1.5 1.5 0 0 0 7 13.5h7z" />
+          </svg> logout</h6>
+      </a></button>
     {% endif %}
   </nav>
   {% comment %}

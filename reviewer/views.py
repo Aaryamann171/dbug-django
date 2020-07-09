@@ -54,7 +54,7 @@ def reviewed_view(request, *args, **keywordargs):
 
     req_from = [e.req_from for e in Done_Requests.objects.all()
                 if e.req_to == user]
-    
+
     req_id = [e.id for e in Done_Requests.objects.all()
               if e.req_to == user]
 
@@ -65,7 +65,7 @@ def reviewed_view(request, *args, **keywordargs):
                if e.req_to == user]
 
     data = zip(code_snippets, req_from, comments, req_id, reviews)
-    
+
     context = {"data": tuple(data)}
     return render(request, 'reviewed.html', context)
 
@@ -117,7 +117,7 @@ def send_review_done_mail(code, email_id, username_req_from, username_req_to, re
     to_send = EmailMessage()
 
     msg = "Hi " + str(username_req_from) + "!\n\n" + \
-        "This automated message was sent to you because your code has been reviewed by "+ username_req_to + "!\n\n" + \
+        "This automated message was sent to you because your code has been reviewed by " + username_req_to + "!\n\n" + \
         "Details -\nCode: " + str(code) + "\nReview ID: " + rev_id + "\n\n" + \
         "Have a nice day!\nTeam d.bug"
 
@@ -162,9 +162,9 @@ def send_request(request):
 
     # add new request to pending db
     x = Pending_Requests(
-        code = data['codeInput'], 
-        req_from = request.user.username,
-        req_to = data['username'], 
+        code=data['codeInput'],
+        req_from=request.user.username,
+        req_to=data['username'],
         comments=data['commentInput'])
     x.save()
 
@@ -193,15 +193,14 @@ def review_submitted(request):
             'comments': request.POST.get('comments'),
             'review_submitted': request.POST.get('review_text')
         }
-    
+
     # send notification (code reviewed)
         send_review_done_mail(
-            context['code'], 
-            context['email_id_req_from'], 
-            context['req_from'], 
-            context['req_to'], 
+            context['code'],
+            context['email_id_req_from'],
+            context['req_from'],
+            context['req_to'],
             context['rev_id'])
-
 
     # remove entry from pending db
     # x = Pending_Requests(
@@ -209,20 +208,20 @@ def review_submitted(request):
     #     req_from = context['req_from'],
     #     req_to = context['req_to'],
     #     comments = context['comments'])
-    x = Pending_Requests.objects.get(req_from = context['req_from'], comments = context['comments'])
+    x = Pending_Requests.objects.get(
+        req_from=context['req_from'], comments=context['comments'])
     x.delete()
 
     # add entry to done db
     x = Done_Requests(
-            code = context['code'],
-            req_from = context['req_from'],
-            req_to = context['req_to'], 
-            comments = context['comments'],
-            reviews_added = context['review_submitted'])
+        code=context['code'],
+        req_from=context['req_from'],
+        req_to=context['req_to'],
+        comments=context['comments'],
+        reviews_added=context['review_submitted'])
     x.save()
 
-
-    return render(request, 'review_submitted.html/', context) 
+    return render(request, 'review_submitted.html/', context)
 
 
 def sent_pending_view(request):
