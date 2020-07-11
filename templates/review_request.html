@@ -4,8 +4,21 @@
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/lib/codemirror.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/cobalt.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/material-darker.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/gruvbox-dark.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/oceanic-next.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/dracula.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/nord.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/twilight.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/base16-light.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/base16-dark.css' %}">
+
   <script type="text/javascript" src="{% static 'plugin/codemirror/lib/codemirror.js' %}"></script>
   <script type="text/javascript" src="{% static 'plugin/codemirror/mode/python/python.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/clike/clike.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/java/java.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/go/go.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/shell/shell.js' %}"></script>
 </head>
 <div style="
     margin-left: 7em;
@@ -16,6 +29,18 @@
 
   <h1>Send review request</h1>
   <br><br>
+  <p>theme: <select onchange="selectTheme()" id="select">
+      <option value="0" selected>default</option>
+      <option value="1">base16-light</option>
+      <option value="2">base16-dark</option>
+      <option value="3">cobalt</option>
+      <option value="4">gruvbox-dark</option>
+      <option value="5">oceanic-next</option>
+      <option value="6">dracula</option>
+      <option value="7">nord</option>
+      <option value="8">twilight</option>
+    </select></p>
+
   <form action="/sendRequest/" method="POST">
     {% csrf_token %}
     <div class="form-group">
@@ -43,19 +68,33 @@
   </form>
 
 </div>
+<footer style="margin-top: 4em"></footer>
 <script>
+
   var cm = CodeMirror.fromTextArea(
     document.getElementById("codeInput"),
     {
       mode: "python",
-      theme: "cobalt",
+      theme: "default",
       lineNumbers: true,
       lineWrapping: true,
+      matchBrackets: true,
+      autoCloseTags: true,
+      autoCloseBrackets: true,
       indentUnit: 4,
       indentWithTabs: true,
       viewportMargin: Infinity,
       autofocus: true
     }
-  ); 
+  );
+  // Sets the theme
+  var input = document.getElementById("select");
+
+  function selectTheme() {
+    var theme = input.options[input.selectedIndex].innerHTML;
+    cm.setOption("theme", theme);
+  }
+
+
 </script>
 {% endblock %}
