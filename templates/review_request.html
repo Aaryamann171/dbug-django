@@ -2,6 +2,7 @@
 
 <head>
   {% load static %}
+  <!-- themes and codemirror css -->
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/lib/codemirror.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/cobalt.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/material-darker.css' %}">
@@ -12,13 +13,21 @@
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/twilight.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/base16-light.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/theme/base16-dark.css' %}">
-
+  <!-- autocomplete / show-hint and lint addon   -->
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/addon/hint/show-hint.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'plugin/codemirror/addon/lint/lint.css' %}">
+  <!-- codemirror js and mode / languages  -->
   <script type="text/javascript" src="{% static 'plugin/codemirror/lib/codemirror.js' %}"></script>
   <script type="text/javascript" src="{% static 'plugin/codemirror/mode/python/python.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/javascript/javascript.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/php/php.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/markdown/markdown.js' %}"></script>
   <script type="text/javascript" src="{% static 'plugin/codemirror/mode/clike/clike.js' %}"></script>
-  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/java/java.js' %}"></script>
-  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/go/go.js' %}"></script>
-  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/shell/shell.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/mode/css/css.js' %}"></script>
+  <!-- addons -->
+  <script type="text/javascript" src="{% static 'plugin/codemirror/src/edit/closebrackets.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/addon/hint/show-hint.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugin/codemirror/addon/lint/lint.js' %}"></script>
 </head>
 <div style="
     margin-left: 7em;
@@ -39,6 +48,15 @@
       <option value="6">dracula</option>
       <option value="7">nord</option>
       <option value="8">twilight</option>
+    </select></p>
+  <p>language: <select onchange="selectMode()" id="mode">
+      <option value="python" selected>python</option>
+      <option value="text/x-java">java</option>
+      <option value="text/x-c">c</option>
+      <option value="text/x-php">php</option>
+      <option value="text/javascript">javascript</option>
+      <option value="css">html/css</option>
+      <option value="text/markdown">markdown</option>
     </select></p>
 
   <form action="/sendRequest/" method="POST">
@@ -79,22 +97,29 @@
       lineNumbers: true,
       lineWrapping: true,
       matchBrackets: true,
+      lint: true,
       autoCloseTags: true,
       autoCloseBrackets: true,
+      extraKeys: { "Ctrl-Space": "autocomplete" },
       indentUnit: 4,
       indentWithTabs: true,
       viewportMargin: Infinity,
       autofocus: true
     }
   );
-  // Sets the theme
-  var input = document.getElementById("select");
+  var input_theme = document.getElementById("select");
+  var input_mode = document.getElementById("mode");
 
+  // Sets the theme
   function selectTheme() {
-    var theme = input.options[input.selectedIndex].innerHTML;
+    var theme = input_theme.options[input_theme.selectedIndex].innerHTML;
     cm.setOption("theme", theme);
   }
-
+  // Sets the mode
+  function selectMode() {
+    var mode = input_mode.options[input_mode.selectedIndex].value;
+    cm.setOption("mode", mode);
+  }
 
 </script>
 {% endblock %}
