@@ -2,30 +2,31 @@
 
 <h1 style="
 		margin-left: 5em; 
-		margin-top: 100px; 
+		margin-top: 50px; 
 		font-family: 'Quicksand', sans-serif;">
 	welcome to <span style="color: #335eea"><strong>d.bug</strong></span>
 </h1>
 
 
 {% if user.is_authenticated %}
-<button class="btn btn-light btn-lg" style="margin-left: 12em; margin-top: 0em; margin-right: 10em"><a
-		href="home" style="text-decoration: none;">Homepage</a></button>
+<button class="btn btn-light btn-lg" style="margin-left: 12em; margin-top: 0em; margin-right: 10em"><a href="home"
+		style="text-decoration: none;">Homepage</a></button>
 
 {% else %}
 
-<button class="btn btn-primary btn-lg" style="margin-left: 12em; margin-top: 0em;"><a href="login/" style="text-decoration: none; color: white;" >Login</a></button>
+<button class="btn btn-primary btn-lg" style="margin-left: 12em; margin-top: 0em;"><a href="login/"
+		style="text-decoration: none; color: white;">Login</a></button>
 
-<button class="btn btn-light btn-lg" style="margin-left: 0.6em; margin-top: 0em; margin-right: 6em;"><a href="register/" style="text-decoration: none">
-		<span>	Sign Up	</span>
+<button class="btn btn-light btn-lg" style="margin-left: 0.6em; margin-top: 0em; margin-right: 6em;"><a href="register/"
+		style="text-decoration: none">
+		<span> Sign Up </span>
 	</a></button>
-	
+
 {% endif %}
-<img src="static/git_coder.png" height="600" width="600">
+<img src="static/git_coder.png" height="500" width="500">
 <!-- <button class="btn btn-primary" style="" >Sign-In -></button> -->
 
-<table class="table table-borderless" 
-	style="
+<table class="table table-borderless" style="
 		margin-left: 12em; 
 		/* margin-right: 14em; */
 		table-layout: fixed;
@@ -33,7 +34,7 @@
 		font-family: 'Quicksand', sans-serif;">
 	<thead>
 		<tr>
-			
+
 			<th scope="col">
 				<svg width="3.5em" height="3.5em" viewBox="0 0 16 16" class="bi bi-app-indicator" fill="#007BFF"
 					xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@
 						d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.146 4.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 1 1-.708-.708L4.793 6.5 3.146 4.854a.5.5 0 0 1 0-.708z" />
 				</svg>
 			</th>
-			
+
 			<th scope="col">
 				<svg width="3.5em" height="3.5em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="#007BFF"
 					xmlns="http://www.w3.org/2000/svg">
@@ -81,11 +82,11 @@
 				type code in real-time with syntax <br>
 				highlighting support for all major <br> languages
 			</td>
-			
+
 			<td style="width: 60px; font-size: 18px; margin-right: 10em;">
-				send your review requests to <br> 
-				personlised and trusted people,<br> 
-				keeping your code private and <br> 
+				send your review requests to <br>
+				personlised and trusted people,<br>
+				keeping your code private and <br>
 				secure.
 			</td>
 		</tr>

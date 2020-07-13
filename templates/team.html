@@ -1,16 +1,79 @@
 {% extends "base.html" %} {% block content %}
 
-<div
-  style="
-    margin-left: 7em;
-    margin-right: 7em;
-    margin-top: 5em;
-    font-family: 'Quicksand', sans-serif;
-  "
->
-  <h1>Aaryamann</h1>
-  <h1>Akshit</h1>
-  <h1>Vaibhav</h1>
-  <h1>Aditya Vikram Rajawat</h1>
+<div class="container" style="
+   /* margin-left: 12em; */
+   /* margin-right: 7em; */
+   margin-top: 4em;
+   font-family: 'Quicksand', sans-serif;
+   ">
+
+  <h1 style="font-size: 80px;">
+    <strong>the team</strong>
+  </h1><br><br>
+  <center>
+
+    <table style="text-align: center; ">
+      <tr style="margin-left: 0em;">
+        <td style="padding:15px">
+          <div class="w3-card-4" style="width:70%">
+            <img src="../static/team/akshit.jpg" alt="akshit sarin"
+              style="width:425; height:425px; border-radius: 30px">
+            <div class="w3-container w3-center"
+              style="background-color: white; width: 80%; border-radius: 40px; margin-top: 1.4em; margin-left: 1.2em;">
+              <p style="color: black; font-size: 22px">akshit sarin</p>
+            </div>
+          </div>
+        </td>
+        <td style="text-align: center;padding:15px">
+          <div class="w3-card-4" style="width:70%">
+            <img src="../static/team/aaryamann.jpg" alt="aaryamann"
+              style="width:425; height:425px; border-radius: 30px">
+            <div class="w3-container w3-center"
+              style="background-color: white; width: 80%; border-radius: 40px; margin-left: 1.4em;margin-top: 1.4em">
+              <p style="color: black; font-size: 22px">aaryamann</p>
+            </div>
+          </div>
+        </td>
+        <td style="text-align: center;padding:15px">
+          <div class="w3-card-4" style="width:70%">
+            <img src="../static/team/vaibhav.png" alt="vaibhav srivastava"
+              style="width:425; height:425px; border-radius: 30px">
+            <div class="w3-container w3-center"
+              style="background-color: white; width: 80%; border-radius: 40px; margin-left: 2em;margin-top: 1.4em">
+              <p style="color: black; font-size: 22px;">vaibhav srivastava</p>
+            </div>
+          </div>
+        </td>
+
+      </tr>
+      <center>
+
+
+        <tr style="margin-left: 0em;">
+          <td style="text-align: center;padding:15px">
+            <div class="w3-card-4" style="width:70%">
+              <img src="../static/team/bajawat.png" alt="adityavikram rajawat"
+                style="width:425; height:425px; border-radius: 30px">
+              <div class="w3-container w3-center"
+                style="background-color: white; width: 90%; border-radius: 40px; margin-left: 2em;margin-top: 1.4em">
+                <p style="color: black; font-size: 22px">adityavikram<br>rajawat</p>
+              </div>
+            </div>
+          </td>
+          <td style="text-align: center; padding:15px">
+            <div class="w3-card-4" style="width:70%">
+              <img src="../static/team/arnav.png" alt="adityavikram rajawat"
+                style="width:425; height:425px; border-radius: 30px">
+              <div class="w3-container w3-center"
+                style="background-color: white; width: 80%; border-radius: 40px; margin-left: 2em;margin-top: 1.4em">
+                <p style="color: black; font-size: 22px">arnav goel</p>
+              </div>
+            </div>
+          </td>
+      </center>
+      </tr>
+    </table>
+  </center>
+
 </div>
 {% endblock %}

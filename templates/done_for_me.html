@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-
+{% if user.is_authenticated%}
 <div style="
     margin-left: 7em;
     margin-right: 7em;
@@ -8,20 +8,21 @@
   ">
 
   <h1 style="padding-bottom: 2em;">Already reviewed for <span style=" color: #335eea;">{{ user.get_username }}
-  </span></h1>
+    </span></h1>
 
   {% if data|length > 0 %}
   {% for code,req_from,comment, id, review, rev_by in data %}
 
   <div style="margin-bottom: 2em;">
-    <button type="button" class="collapsible btn btn-dark">reviewed by 
+    <button type="button" class="collapsible btn btn-dark">reviewed by
       <strong> {{ rev_by }} </strong><br> request id <strong>{{ id }}</strong></button>
-    
+
     <div class="content">
       <pre class="prettyprint">
         {{ code|safe|linebreaks }}
       </pre>
-      Comments: <br> {{ comment }} <hr>
+      Comments: <br> {{ comment }}
+      <hr>
       Reviews: <br> {{ review }}
     </div>
   </div>
@@ -34,4 +35,14 @@
 
   {% endif %}
 </div>
+{% else %}
+<div class="container" style="margin-top: 10%; font-family: 'Quicksand', sans-serif; margin-left: 12em;">
+
+  <h1 style=" font-size: 100px">
+    <strong">Uh oh!</strong">
+  </h1><br><br>
+  <h1> You must be logged in to see this page!</h1>
+  <h1>Click <a href="/login/" style="text-decoration: none">here</a> to login!</h1>
+</div>
+{% endif %}
 {% endblock %}
