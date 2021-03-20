@@ -8,7 +8,7 @@ django-heroku==0.3.1
 django-multiforloop==0.2.1
 gitignore==0.0.8
 gunicorn==20.0.4
-Jinja2==2.11.2
+Jinja2==2.11.3
 python-dotenv==0.14.0
 psycopg2==2.8.5
 static3==0.7.0
